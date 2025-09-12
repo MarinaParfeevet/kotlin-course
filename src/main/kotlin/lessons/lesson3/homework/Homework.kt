@@ -68,7 +68,7 @@ package ru.stimmax.lessons.lesson3.homework
     val privatePolicy:String = "private policy"
 
 //    Приватные отзывы (фидбэк) участников и зрителей для анализа проблем.
-    private val userFeedback:String by lazy {"feedback"}
+    private lateinit var userFeedback:String
 
 //    Текущая температура в помещении
    var currentTempuratory:Int = 23
@@ -114,6 +114,7 @@ package ru.stimmax.lessons.lesson3.homework
 
 //    Список партнеров мероприятия
     var partnersList:String = "partners list"
+    private set
 
 //    Отчет, включающий фотографии, видео и отзывы, генерируется и становится доступен после завершения мероприятия.
     val mediaReport:String by lazy {"media report"}
@@ -132,8 +133,6 @@ package ru.stimmax.lessons.lesson3.homework
 
 //    Общее настроение участников (определяется опросами)
     var spirit: Int = 50
-    get() {return if (field >30) field else 0}
-    set(value) {field =value}
 
 //    Подробный план хакатона, включающий время и содержание каждого сегмента, инициализируется непосредственно перед началом мероприятия, так как зависит от фактического состава команд и взятых в работу задач.
     lateinit var hakatonDetailPlan: String
