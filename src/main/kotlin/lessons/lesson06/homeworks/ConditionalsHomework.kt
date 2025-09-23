@@ -46,8 +46,8 @@ fun petAge(petAge: Int): Double {
 // Если маршрут до 1 км - "пешком", до 5 км - "велосипед", иначе - "автотранспорт".
 fun findBestTransport(distance: Double) {
     when (distance) {
-        in 0.0..1.0 -> println("on foot")
-        in 2.0..5.0 -> println("by bicycle")
+        in 0.0..<1.0 -> println("on foot")
+        in 1.0..5.0 -> println("by bicycle")
         else -> println("use transport")
     }
 }
