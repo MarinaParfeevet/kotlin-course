@@ -1,4 +1,4 @@
-package ru.stimmax.lessons.lesson10.homeworks
+package ru.stimmax.lessons.lesson10
 
 /*
 Дорогой ассистент!
