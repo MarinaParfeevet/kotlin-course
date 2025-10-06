@@ -1,4 +1,4 @@
-package lessons.lesson08.homeworks
+package lessons.lesson09.homeworks
 
 fun main() {
 // ------------------------- Работа с массивами Array -------------------------
