@@ -27,7 +27,9 @@ fun main() {
     //7.Создайте словарь (ключи Double, значения Int) и выведи в цикле результат деления ключа на значение. Не забудь обработать деление на 0 (в этом случае выведи слово “бесконечность”)
     val map5 = mutableMapOf(2.4 to 1, 5.7 to 0, 8.6 to 2, 6.6 to 2)
     for ((double, inter) in map5) {
-        if (inter == 0) println("бесконечность")
+        if (inter == 0) {
+            println("бесконечность")
+        }
         else println(double / inter)
     }
 
@@ -38,7 +40,7 @@ fun main() {
     //9.Создайте два словаря и объедините их в третьем изменяемом словаре через циклы.
     val map6 = mapOf(1 to 'a', 2 to 'b', 3 to 'c', 4 to 'd')
     val map7 = mapOf(1 to 'e', 5 to 'f', 6 to 'g')
-    var map8 = mutableMapOf<Int, Char>()
+    val map8 = mutableMapOf<Int, Char>()
     for ((key, value) in map6) {
         map8[key] = value
     }
@@ -48,7 +50,7 @@ fun main() {
     println(map8)
 
     //10.Создайте словарь, где ключами являются строки, а значениями - списки целых чисел. Добавьте несколько элементов в этот словарь.
-    var map9 = mutableMapOf<String, List<Int>>()
+    val map9 = mutableMapOf<String, List<Int>>()
     map9["odin"] = listOf(1, 3, 5)
     map9["dva"] = listOf(11, 33, 55, 66)
     println(map9)
@@ -81,7 +83,7 @@ fun main() {
     val library = mutableMapOf<String, MutableSet<String>>()
 
     //2.Справочник растений: Ключи - типы растений (например, "Цветы", "Деревья"), значения - списки названий растений
-    val plantsBook = mutableMapOf<String, Set<String>>()
+    val plantsBook = mapOf<String, Set<String>>()
 
     //3.Четвертьфинала: Ключи - названия спортивных команд, значения - списки игроков каждой команды
     val championship = mapOf<String, Set<String>>()
@@ -90,6 +92,6 @@ fun main() {
     val medical = mutableMapOf<String, MutableSet<String>>()
 
     //5.Словарь путешественника: Ключи - страны, значения - словари из городов со списком интересных мест.
-    val travellers = mapOf<String, Map<String, MutableSet<String>>>()
+    val travellers = mutableMapOf<String, MutableMap<String, MutableSet<String>>>()
 
 }
