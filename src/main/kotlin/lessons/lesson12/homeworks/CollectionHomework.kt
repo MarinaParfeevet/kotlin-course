@@ -166,7 +166,7 @@ fun getStringMapDescription(m: List<Int>): String {
         m.isEmpty() -> "Пусто"
         m.size < 5 -> "Короткая"
         m.first() == 0 -> "Стартовая"
-        m.min() > 1000 -> "Положительная"
+        (m.minOrNull() ?: 0) > 1000 -> "Положительная"
         m.sum() > 1000 -> "Массивная"
         m.average().toInt() == 10 -> "Сбалансированная"
         m.joinToString(separator = "").length == 20 -> "Клейкая"
@@ -220,11 +220,5 @@ fun categorise(list: List<Int>): Map<String, List<Int>> {
 //    Цель: Найти первый возраст в списке, который соответствует условию (больше второго аргумента) и вернуть его,
 //    либо null если значения не нашлось.
 fun findFirstElement(list: List<Int?>, age: Int): Int? {
-    for (elem in list) {
-        if (elem == null) continue
-        if (elem > age) return elem
-    }
-    return null
+    return list.filterNotNull().firstOrNull { it > age }
 }
-
-
