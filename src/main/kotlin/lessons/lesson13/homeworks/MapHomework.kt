@@ -40,7 +40,7 @@ fun main() {
 //8.В словаре хранятся результаты тестирования API (ключ — endpoint, значение — статус ответа в виде строки). Для
 // указанного endpoint найдите статус ответа, если endpoint отсутствует, предположите, что он не был протестирован.
     val m8 = mapOf("endpoin1" to "200", "endpoin2" to "505", "endpoin3" to "404")
-    val r = m8.getOrDefault("endpoin7") { "not tested" }
+    val r = m8.getOrElse("endpoin7") { "not tested" }
 
 //9.Из словаря, содержащего конфигурации тестового окружения (ключ — название параметра конфигурации, значение - сама
 // конфигурация), получите значение для "browserType". Ответ не может быть null.
@@ -129,7 +129,7 @@ fun main() {
 
 //28.Отфильтруйте словарь с результатами тестирования сервисов, оставив только те тесты, которые не прошли успешно
 // и содержат в названии “optional”.
-    m20.filter { it.value=="failed" }.forEach{println(it)}
+    m20.filterNot { it.value=="passed" }.filter { it.key.contains("optional") }.forEach{println(it)}
 
 
 }
