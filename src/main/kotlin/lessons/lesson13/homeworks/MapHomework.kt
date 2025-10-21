@@ -131,5 +131,4 @@ fun main() {
 // и содержат в названии “optional”.
     m20.filterNot { it.value=="passed" }.filter { it.key.contains("optional") }.forEach{println(it)}
 
-
 }
