@@ -1,9 +1,9 @@
 package ru.stimmax.lessons.lesson14.homeworks.shelfAndRack
 
 class Shelf(
-    var capacity: Int,
-    var items: MutableList<String>
+    var capacity: Int
 ) {
+    var items: MutableList<String> = mutableListOf()
     fun addItem(item: String): Boolean {
         if (canAccommodate(item)) {
             return items.add(item)
@@ -24,7 +24,10 @@ class Shelf(
     }
 
     private fun canAccommodate(item: String): Boolean {
-        return item.length < capacity
+        val currentAccommodation = items.map {
+            it.length
+        }.sum()
+        return currentAccommodation + item.length <= capacity
     }
 
 }

@@ -5,10 +5,9 @@ package ru.stimmax.lessons.lesson14.homeworks
 // текущую фазу Луны (например, "Full Moon", "New Moon"). Добавьте метод showPhase(), который выводит текущую фазу
 // Луны.
 
-class Moon(
-    var isVisible: Boolean,
-    var phase: String
-) {
+object Moon{
+    var isVisible: Boolean = false
+    var phase: String = "first"
     fun showPhase() {
         if (isVisible) {
             println(phase)

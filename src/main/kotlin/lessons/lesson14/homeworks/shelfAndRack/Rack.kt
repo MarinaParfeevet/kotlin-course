@@ -59,8 +59,14 @@ class Rack(
         if (index !in shelves.indices) {
             return emptyList()
         }
-
-        //TODO
-       else return shelves[index].getItems()
+        val notReplacedItems = mutableListOf<String>()
+        val otherShelves = shelves - shelves[index]
+        for (item in shelves[index].getItems()) {
+            if (otherShelves.none { it.addItem(item) }) {
+                notReplacedItems.add(item)
+            }
+        }
+        shelves.removeAt(index)
+        return notReplacedItems.toList()
     }
 }

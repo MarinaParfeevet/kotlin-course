@@ -8,14 +8,16 @@ class Concert(
     var group: String,
     var place: String,
     var capacity: Int,
-    private var soldTicket: Int
 ) {
+    private var soldTicket: Int = 0
     fun showInfo() {
         println("$group, $place, $capacity, $soldTicket")
     }
 
     fun buyTicket() {
-        soldTicket++
+        if (soldTicket < capacity) {
+            soldTicket++
+        }
     }
 
 }
