@@ -3,7 +3,7 @@ package ru.stimmax.lessons.lesson14.homeworks.shelfAndRack
 class Shelf(
     var capacity: Int
 ) {
-    var items: MutableList<String> = mutableListOf()
+    private var items: MutableList<String> = mutableListOf()
     fun addItem(item: String): Boolean {
         if (canAccommodate(item)) {
             return items.add(item)

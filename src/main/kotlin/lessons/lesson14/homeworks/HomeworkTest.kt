@@ -1,8 +1,8 @@
 package ru.stimmax.lessons.lesson14.homeworks
 
 fun main() {
-    val moon = Moon(false, "Full moon")
-    moon.showPhase()
+
+    Moon.showPhase()
 
     val emotion = Emotion("funny", 5)
     emotion.express()
