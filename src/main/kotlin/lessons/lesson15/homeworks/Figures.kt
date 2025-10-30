@@ -37,7 +37,7 @@ class Rectangle(x: Int, var y: Int) : Polygon(x) {
 //Производные классы: Школа, …
 //Дополнительное разветвление для …: …
 open class EducCentre(var city: String) {}
-class School(city: String, type: String) : EducCentre(city) {}
+class School(city: String, var type: String) : EducCentre(city) {}
 open class HighEduc(city: String, var type: String) : EducCentre(city) {}
 class University(city: String, type: String, var prestige: Int) : HighEduc(city, type) {}
 class Academy(city: String, type: String, var specilization: String) : HighEduc(city, type) {}
