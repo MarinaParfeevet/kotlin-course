@@ -1,7 +1,7 @@
 package ru.stimmax.lessons.lesson17.homeworks
 abstract class BaseClass(
     // 1. объясни, почему это поле доступно в main() для чтения из класса ChildrenClass
-    //Потому что там указано val privateVal: String, что является объявлением одноименной переменной
+    //Потому что там это поле публичное
     private val privateVal: String,
     // 2. объясни, почему это поле недоступно в main()
     //Потому что модификатор доступа protected. Вызов доступен из класса и из его дочерних классов.
