@@ -35,20 +35,22 @@ class Busket(var map: MutableMap<String, Int>) {
 
     fun addToCart(itemMap: Map<String, Int>) {
         itemMap.forEach {
-            if (map.containsKey(it.key)) {
-                map[it.key] = map.getValue(it.key).plus(it.value)
-            } else {
-                map.put(it.key, 1)
-            }
+            addToCart(it.key, it.value)
         }
     }
 
     fun addToCart(list: List<String>) {
         list.forEach {
-            if (map.containsKey(it)) {
-                map[it] = map.getValue(it).plus(1)
-            } else map[it] = 1
+            addToCart(it)
         }
+    }
+
+    override fun toString(): String {
+        val countID = map.size
+        val countAmount = map.values.sum()
+        val list = map.map { "Артикул: ${it.key}  Количество: ${it.value}" }
+            .joinToString(separator = "\n")
+        return list + "Всего артикулов: $countID \n Всего товаров: $countAmount"
     }
 }
 
