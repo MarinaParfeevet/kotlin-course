@@ -46,11 +46,7 @@ class PhrasesToListOfStrings() : Mapper<String, List<String>> {
 //5.Создай функцию transposition с двумя дженериками, которая принимает словарь с дженериками и возвращает словарь,
 // в котором ключ и значения поменялись местами.
 fun <T, R> transposition(map: Map<T, R>): Map<R, T> {
-    val result = mutableMapOf<R, T>()
-    for (el in map) {
-        result[el.value] = el.key
-    }
-    return result.toMap()
+    return map.map{it}.associate{it.value to it.key} // map  преобразует словарь в список, далее associate преобразует список в словарь
 }
 
 //6.Напиши интерфейс Validator с дженериком с функцией валидации, которая будет принимать элемент с типом дженерика
@@ -79,7 +75,7 @@ class OddValidator() : Validator<Int> {
 //Ни один элемент приведённый к типу Double не равен 0.0
 class ListValidator<R : Number>() : Validator<List<R?>> {
     override fun validate(el: List<R?>): Boolean {
-        return el.all {it != null && it.toDouble() !=0.0 }
+        return el.all { it != null && it.toDouble() != 0.0 }
     }
 }
 
@@ -87,5 +83,5 @@ fun main() {
     println(getMiddleElement(listOf(1.0, 2.9, 8.9, 3.67, 5, 6, 7)))
 
     val number9 = ListValidator<Number>()
-    println(number9.validate(listOf(22,null,5)))
+    println(number9.validate(listOf(22, null, 5)))
 }
