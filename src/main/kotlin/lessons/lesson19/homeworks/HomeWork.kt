@@ -39,7 +39,7 @@ class PhrasesToListOfStrings() : Mapper<String, List<String>> {
     }
 
     override fun convertList(list: List<String>): List<List<String>> {
-        return list.map { it.split(" ") }
+        return list.map { convertType(it) }
     }
 }
 
@@ -63,8 +63,7 @@ interface Validator<R> {
 // не является null, не пустая и не состоит из одних пробелов.
 class StringValidator() : Validator<String?> {
     override fun validate(el: String?): Boolean {
-        if (el.isNullOrBlank()) return false
-        return true
+        return !el.isNullOrBlank()
     }
 }
 
