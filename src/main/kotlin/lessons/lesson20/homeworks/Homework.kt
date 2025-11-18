@@ -15,13 +15,12 @@ fun Array<Int>.task1(): Pair<Int?, Int?> {
 //сам изменяемый список при этом должен стать отсортированным по возрастанию, если в функцию передано true и по
 // убыванию, если false (используем функции sort() и sortDescending()
 fun <T : Comparable<T>> MutableList<T>.task2(check: Boolean): List<T> {
-    val temp = this.toList()
     if (check) {
         sort()
     } else {
         sortDescending()
     }
-    return temp
+    return this.toList()
 }
 
 //3.Создайте функцию-расширение для nullable словаря с дженериком:
@@ -31,8 +30,8 @@ fun <T : Comparable<T>> MutableList<T>.task2(check: Boolean): List<T> {
 //Возвращает nullable словарь из ключей изначального словаря приведённых к строке через toString()
 //Значений из nullable дженерика, взятых из изначального ключа-списка по индексу из аргумента, если такого индекса нет
 // - значением будет null
-fun <T> Map<T, List<T>?>.task3(number: Int): Map<String, T?> {
-    return map { it }.associate { it.key.toString() to it.value?.getOrNull(number) }
+fun <T> Map<T, List<T>>?.task3(number: Int): Map<String, T?>? {
+    return this?.map { it }?.associate { it.key.toString() to it.value.getOrNull(number) }
 }
 
 //4.Реализуйте метод расширения within для класса Number, который проверяет, что текущее число отклоняется от
@@ -40,9 +39,9 @@ fun <T> Map<T, List<T>?>.task3(number: Int): Map<String, T?> {
 // максимально допустимое отклонение. Метод должен возвращать true, если разница между текущим числом и числом для
 // сравнения не превышает заданное отклонение. Протестируйте функцию на разных типах чисел. Для получения отклонения,
 // у разницы чисел нужно вызвать свойство absoluteValue.
-fun Number.within(other:Number, deviation:Number):Boolean {
-    val dif = this.toDouble()-other.toDouble()
-    return dif.absoluteValue <= deviation.toDouble()
+fun Number.within(other: Number, deviation: Number): Boolean {
+    val dif = (this.toDouble() - other.toDouble()).absoluteValue
+    return dif <= deviation.toDouble()
 }
 
 //5.Реализуйте для класса String два метода расширения: encrypt и decrypt. Метод encrypt должен сдвигать каждый символ
@@ -50,23 +49,37 @@ fun Number.within(other:Number, deviation:Number):Boolean {
 // Оба метода принимают один параметр base типа Int, который определяет величину сдвига. Протестируйте вашу реализацию,
 // убедившись, что после шифрования и последующей расшифровки строка возвращается к исходному состоянию.
 //Сдвиг по таблице Unicode реализуется простым прибавлением или вычитанием размера сдвига к char символу.
-fun String.encrypt(base:Int):String{
-    return map{it+base}.joinToString("")
+fun String.encrypt(base: Int): String {
+    return map { it + base }.joinToString("")
 }
 
-fun String.decrypt(base:Int):String{
-    return map{it-base}.joinToString("")
+fun String.decrypt(base: Int): String {
+    return map { it - base }.joinToString("")
 }
 
 //6.Многие уже знают любимую игру в Твиттере - собирание разных слов из букв через ответы (но мы то знаем что слово
 //только одно, но не будем его называть). Напиши метод расширения строки, который будет принимать список имён
 //пользователей и выводить в консоли исходную строку побуквенно в верхнем регистре в столбик: имя автора и букву под ним.
 
-
+fun String.twitter(list: List<String>) {
+    var i = 0
+    this.forEach {
+        println(list[i])
+        println(it.uppercase())
+        i++
+        if (i >= list.size) {
+            i = 0
+        }
+    }
+}
 
 fun main(args: Array<String>) {
+    println(mutableListOf(3, 6, 8, 1, -9).task2(false))
+
     println("abc".encrypt(2))
     println("abc".encrypt(2).decrypt(2))
     println("efz".decrypt(1))
+
+    "abcd".twitter(listOf("anna bob", "tom cruse"))
 
 }
