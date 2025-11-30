@@ -1,7 +1,6 @@
 package ru.stimmax.lessons.lesson22.homework
 
 
-
 fun main() {
 //1.  NullPointerException
     try {
@@ -77,10 +76,10 @@ fun main() {
     //12. Создай свой тип исключения в отдельном файле, наследуемый от RuntimeException и принимающий
 // IndexOutOfBoundsException тип в качестве аргумента. Напиши код, который спровоцирует выброс IndexOutOfBoundsException,
 // перехвати его с помощью try-catch и в блоке catch выведи сообщение в консоль и сделай выброс своего типа исключения.
-    try{
+    try {
         val arr = arrayOf(1, 2, 3)
         arr[3]
-    } catch(e:IndexOutOfBoundsException){
+    } catch (e: IndexOutOfBoundsException) {
         throw MyExc12(e)
     }
 }
@@ -101,6 +100,7 @@ fun main() {
 fun checkExc(arg: Any?) {
     try {
         arg as Int
+
         require(arg in 0..100)
         check(arg.toInt() == 100)
     } catch (e: Throwable) {

@@ -64,4 +64,9 @@ fun tryCastToListAndPrint(arg: Any) {
     val result = (arg as? List<*>)?.map { (it as? String) ?: "Элемент не является строкой" }
         ?: "Не удалось преобразовать аргумент в список"
     println(result)
+
+    // второй способ
+    (arg as? List<*>)?.forEach { println((it as? String) ?: "Не является строкой") }
+        ?: println("Ошибка при попытке преобразования типа в List<*>")
+
 }
