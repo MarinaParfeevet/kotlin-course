@@ -13,7 +13,6 @@ fun task1(isCh: Boolean, fn: (String) -> Unit): Int {
 //возвращает список строк
 fun Int.task2(fn: Int.(String) -> List<String>): List<String> {
     return listOf()
-    //return fn("") можно так еще
 }
 
 //3.Создай функцию с двумя дженериками расширяющую первый дженерик, которая:
