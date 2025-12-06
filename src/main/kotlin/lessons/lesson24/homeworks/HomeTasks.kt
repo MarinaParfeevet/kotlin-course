@@ -12,7 +12,7 @@ fun task1(isCh: Boolean, fn: (String) -> Unit): Int {
 //принимает функцию расширения целого числа, принимающую строку и возвращающую список строк
 //возвращает список строк
 fun Int.task2(fn: Int.(String) -> List<String>): List<String> {
-    return listOf()
+    return this.fn("stroka")
 }
 
 //3.Создай функцию с двумя дженериками расширяющую первый дженерик, которая:
