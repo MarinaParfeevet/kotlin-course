@@ -1,5 +1,8 @@
 package ru.stimmax.lessons.lesson29.homeworks
 
+import com.google.gson.GsonBuilder
+import java.io.File
+
 //Task 1
 //Создай дата класс сотрудника компании Employee, содержащий:
 //имя
@@ -14,6 +17,7 @@ data class Employee(
     val position: CharacterTypes,
     val subordinates: List<Employee> = emptyList()
 )
+
 enum class CharacterTypes {
     CTO,
     UX_UI,
@@ -118,21 +122,8 @@ fun ex3() {
         File("structure.json").writeText(it)
     }
 }
-//Task 4
-//Создай функцию в которой:
-//прочитай текст из файла
-//десериализуй его в объект класса Employee
-//распечатай в консоль
-fun ex4() {
-    val gson = Gson()
-    val json = File("structure.json").readText()
-    val cto = gson.fromJson(json, Employee::class.java)
-    println(cto)
-    // Задание 5
-//    ex5(cto).groupBy { it.position }
-//        .map { group -> "${group.key}: ${group.value.joinToString { it.name }}" }
-//        .forEach { println(it) }
-}
+
+
 //Task 5
 //Для любителей алгоритмов. Не обязательное для выполнения.
 //Прочитай текст из файла и десериализуй в объект класса Employee.
